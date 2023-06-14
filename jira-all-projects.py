@@ -7,9 +7,9 @@ import os
 
 all_projects_url = "https://infinitusai.atlassian.net/rest/api/3/project"
 
-jira_token = os.environ.get("JIRA_TOKEN")
+jira_api_token = os.environ.get("JIRA_API_TOKEN")
 
-auth = HTTPBasicAuth("ashwath.sh@infinitus.ai", jira_token)
+auth = HTTPBasicAuth("ashwath.sh@infinitus.ai", jira_api_token)
 
 headers = {
   "Accept": "application/json"

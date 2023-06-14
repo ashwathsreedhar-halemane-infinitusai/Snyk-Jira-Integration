@@ -5,7 +5,7 @@ import json
 import os
 
 # get the Snyk API token from the environment
-snyk_api_token = "15003490-726b-48e5-bb22-22999bda0c0a"
+snyk_api_token = os.environ.get("SNYK_API_TOKEN")
 
 # curl -H "Authorization: token 15003490-726b-48e5-bb22-22999bda0c0a" "https://snyk.io/api/v1/orgs"
 # call get orgs API to get the org details
