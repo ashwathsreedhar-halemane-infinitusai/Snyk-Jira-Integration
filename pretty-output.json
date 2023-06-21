@@ -1,0 +1,46 @@
+{
+    "ashwathsreedhar-halemane-infinitusai/WebGoat-1(main)": [
+       {
+          "type": "sast",
+          "project name": "ashwathsreedhar-halemane-infinitusai/WebGoat-1(main)",
+          "project origin": "github",
+          "project reference": "main",
+          "project id": "38c03c39-5b72-49f3-95ad-25429664ae84",
+          "project link": "https://app.snyk.io/org/0ab5aa02-0901-47b0-bf3e-f515c14981c5/project/38c03c39-5b72-49f3-95ad-25429664ae84",
+          "ignored": false,
+          "ignore reason": "",
+          "file path": "src/main/java/org/owasp/webgoat/lessons/sqlinjection/introduction/SqlInjectionLesson5b.java",
+          "title": "Unsanitized input from an HTTP parameter flows into prepareStatement, where it is used in an SQL query. This may result in an SQL Injection vulnerability.",
+          "severity": "high",
+          "remediation": ""
+       },
+       {
+          "type": "sast",
+          "project name": "ashwathsreedhar-halemane-infinitusai/WebGoat-1(main)",
+          "project origin": "github",
+          "project reference": "main",
+          "project id": "38c03c39-5b72-49f3-95ad-25429664ae84",
+          "project link": "https://app.snyk.io/org/0ab5aa02-0901-47b0-bf3e-f515c14981c5/project/38c03c39-5b72-49f3-95ad-25429664ae84",
+          "ignored": false,
+          "ignore reason": "",
+          "file path": "src/main/java/org/owasp/webgoat/lessons/challenges/challenge5/Assignment5.java",
+          "title": "Unsanitized input from an HTTP parameter flows into prepareStatement, where it is used in an SQL query. This may result in an SQL Injection vulnerability.",
+          "severity": "high",
+          "remediation": ""
+       },
+       {
+          "type": "sast",
+          "project name": "ashwathsreedhar-halemane-infinitusai/WebGoat-1(main)",
+          "project origin": "github",
+          "project reference": "main",
+          "project id": "38c03c39-5b72-49f3-95ad-25429664ae84",
+          "project link": "https://app.snyk.io/org/0ab5aa02-0901-47b0-bf3e-f515c14981c5/project/38c03c39-5b72-49f3-95ad-25429664ae84",
+          "ignored": false,
+          "ignore reason": "",
+          "file path": "src/main/java/org/owasp/webgoat/lessons/sqlinjection/introduction/SqlInjectionLesson5.java",
+          "title": "Unsanitized input from an HTTP parameter flows into executeQuery, where it is used in an SQL query. This may result in an SQL Injection vulnerability.",
+          "severity": "high",
+          "remediation": ""
+       }
+    ]
+}

@@ -49,30 +49,31 @@ for project in paginate_call(url):
                 "title": issue["attributes"]["title"],
                 "severity": issue["attributes"]["severity"],
                 "remediation": "",
+                "issue description": issue["attributes"]
             })
 
-    # OS, Container etc.
-    else:
-        url = f"https://snyk.io/api/v1/org/{SNYK_ORG}/project/{project['id']}/aggregated-issues"
-        response = requests.request("POST", url, headers=headers, data=payload)
-        for issue in response.json()['issues']:
-            if issue['isIgnored']:
-                url = f"https://snyk.io/api/v1/org/{SNYK_ORG}/project/{project['id']}/ignore/{issue['id']}"
-                ignore = requests.request("GET", url, headers=headers, data=payload).json()[0]["*"]
-            output[project["attributes"]['name'].split(':')[0]].append({
-                "type": project['attributes']["type"],
-                "project name": project["attributes"]["name"],
-                "project origin": project["attributes"]["origin"],
-                "project reference": project["attributes"]["targetReference"],
-                "project id": project["id"],
-                "project link": f"https://app.snyk.io/org/{SNYK_ORG}/project/{project['id']}",
-                "ignored": issue["isIgnored"],
-                "ignore reason": ignore["reason"] if issue["isIgnored"] else "",
-                "file path": project["attributes"]["name"].split(":").pop(),
-                "title": issue["issueData"]["title"],
-                "severity": issue["issueData"]["severity"],
-                "remediation": "",
-            })
+    # OS, Container etc are not of importance now, can skip this for now...
+    # else:
+    #     url = f"https://snyk.io/api/v1/org/{SNYK_ORG}/project/{project['id']}/aggregated-issues"
+    #     response = requests.request("POST", url, headers=headers, data=payload)
+    #     for issue in response.json()['issues']:
+    #         if issue['isIgnored']:
+    #             url = f"https://snyk.io/api/v1/org/{SNYK_ORG}/project/{project['id']}/ignore/{issue['id']}"
+    #             ignore = requests.request("GET", url, headers=headers, data=payload).json()[0]["*"]
+    #         output[project["attributes"]['name'].split(':')[0]].append({
+    #             "type": project['attributes']["type"],
+    #             "project name": project["attributes"]["name"],
+    #             "project origin": project["attributes"]["origin"],
+    #             "project reference": project["attributes"]["targetReference"],
+    #             "project id": project["id"],
+    #             "project link": f"https://app.snyk.io/org/{SNYK_ORG}/project/{project['id']}",
+    #             "ignored": issue["isIgnored"],
+    #             "ignore reason": ignore["reason"] if issue["isIgnored"] else "",
+    #             "file path": project["attributes"]["name"].split(":").pop(),
+    #             "title": issue["issueData"]["title"],
+    #             "severity": issue["issueData"]["severity"],
+    #             "remediation": "",
+    #         })
 
 with open('output.json', 'w+') as f:
     output = json.dump(output, f)
