@@ -1,0 +1,38 @@
+{
+    "attributes": {
+        "criticality": [],
+        "environment": [],
+        "lifecycle": []
+    },
+    "branch": "snyk-import-config-changes",
+    "browseUrl": "https://app.snyk.io/org/infinitus-org/project/5dccaa30-d108-4db1-81e1-e361561a48fe",
+    "created": "2023-06-13T22:27:00.386Z",
+    "hostname": null,
+    "id": "5dccaa30-d108-4db1-81e1-e361561a48fe",
+    "imageTag": "",
+    "importingUser": {
+        "email": "ashwath.sh@infinitus.ai",
+        "id": "a62ff44e-6224-4aca-9f6a-293ca36ccb36",
+        "name": "ashwath.sh@infinitus.ai",
+        "username": "ashwathsreedhar-halemane-infinitusai"
+    },
+    "isMonitored": true,
+    "issueCountsBySeverity": {
+        "critical": 0,
+        "high": 4,
+        "low": 16,
+        "medium": 55
+    },
+    "lastTestedDate": "2023-06-13T22:27:00.802Z",
+    "name": "infinitusai/absinthe(snyk-import-config-changes)",
+    "origin": "github",
+    "owner": null,
+    "readOnly": false,
+    "remediation": {},
+    "remoteRepoUrl": "https://github.com/infinitusai/absinthe",
+    "tags": [],
+    "targetReference": "snyk-import-config-changes",
+    "testFrequency": "weekly",
+    "totalDependencies": null,
+    "type": "sast"
+}
