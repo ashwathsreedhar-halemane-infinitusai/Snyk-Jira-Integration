@@ -19,3 +19,11 @@ To create Jira tickets automatically from a Snyk scan, you can use the Snyk API 
 7. Automate the process: To create tickets automatically on an ongoing basis, you can set up a script or program that periodically triggers the above steps. For example, you could schedule a cron job or use a task scheduler to run a script that performs the integration between Snyk and Jira.
 
 Keep in mind that the specific implementation details may vary depending on your Snyk and Jira configurations, as well as the programming language or tools you are using. It's recommended to refer to the documentation of the Snyk API and the Jira API for detailed instructions on how to interact with these systems programmatically.
+
+# Run:
+
+python3 list-all-issues.py 
+
+# Output:
+
+Output.json
