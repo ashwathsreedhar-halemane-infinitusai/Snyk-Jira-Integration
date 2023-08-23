@@ -29,8 +29,10 @@ for project in paginate_call(url):
     # Snyk Code
     if 'sast' in project['attributes']['type'].lower():
         url = f"https://api.snyk.io/v3/orgs/{SNYK_ORG}/issues?version=2021-08-20~experimental&project_id={project['id']}"
+        print(url)
         for issue in paginate_call(url):
             url = f"https://api.snyk.io/v3/orgs/{SNYK_ORG}/issues/detail/code/{issue['id']}?version=2021-08-20~experimental&project_id={project['id']}"
+            # print(url)
             issue = requests.request("GET", url, headers=headers, data=payload).json()['data']
             ignore = {}
             if issue['attributes']['ignored']:
