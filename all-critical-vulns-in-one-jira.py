@@ -27,7 +27,9 @@ crit_count=str((response_dict['issueCountsBySeverity']['high']))
 print(crit_count)
 
 proj_name=response_dict['name']
+print(proj_name)
 proj_link=response_dict['browseUrl']
+print(proj_link)
 
 #Pull in list of high issues from the project
 snyk_url="https://snyk.io/api/v1/org/"+org_id+"/project/"+project_id+"/aggregated-issues"
@@ -46,8 +48,7 @@ snyk_body= json.dumps({
       "no-data"
     ],
     "types": [
-      "vuln",
-      "license"
+      "vuln"
     ],
     "ignored": False,
     "patched": False,
@@ -61,9 +62,10 @@ snyk_body= json.dumps({
 })
 
 response = requests.request("POST", snyk_url, headers=snyk_headers, data=snyk_body)
+print(response.text)
 response_dict = response.json()
 
-print(response_dict)
+# print(response_dict)
 #Creating the payload for the Jira ticket
 payload=  {
     "fields": {
@@ -147,7 +149,7 @@ while response_dict['issues']:
 
 	desc_count+=1
 
-url = "https://infinitusai.atlassian.net/rest/api/3/issue"
+url = "https://infinitusai.atlassian.net/rest/api/2/issue"
 payload=json.dumps(payload)
 
 headers = {
