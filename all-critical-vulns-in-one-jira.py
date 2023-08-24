@@ -1,19 +1,20 @@
 #This script will take all critical issues within a project and create a single Jira ticket
 import requests
 import json
-
+import os
 #Snyk Parameters
-org_id="xxxxxx"
-project_id="xxxxxxx"
-snyk_token=os.environ.get("SNYK_TOKEN")
+
+org_id=os.getenv("synk_org_id_infinitus")
+project_id=os.getenv("SNYK_ABSINTHE_PROJECT_ID")
+snyk_token=os.environ.get("SNYK_API_TOKEN")
 snyk_headers = {
   'Authorization': 'token '+snyk_token,
   'Content-Type': 'application/json'
 }
 
 #Jira Parameters
-jira_token="xxxx"
-jira_proj_id="xxx"
+jira_token=os.getenv("JIRA_API_TOKEN")
+jira_proj_id="VM"
 
 #Pull in project info from Snyk
 snyk_url="https://snyk.io/api/v1/org/"+org_id+"/project/"+project_id
@@ -21,11 +22,14 @@ snyk_body={}
 
 response = requests.request("GET", snyk_url, headers=snyk_headers, data=snyk_body)
 response_dict = response.json()
-crit_count=str((response_dict['issueCountsBySeverity']['critical']))
+
+crit_count=str((response_dict['issueCountsBySeverity']['high']))
+print(crit_count)
+
 proj_name=response_dict['name']
 proj_link=response_dict['browseUrl']
 
-#Pull in list of critical issues from the project
+#Pull in list of high issues from the project
 snyk_url="https://snyk.io/api/v1/org/"+org_id+"/project/"+project_id+"/aggregated-issues"
 
 snyk_body= json.dumps({
@@ -33,7 +37,7 @@ snyk_body= json.dumps({
   "includeIntroducedThrough": False,
   "filters": {
     "severities": [
-      "critical"
+      "high"
     ],
     "exploitMaturity": [
       "mature",
@@ -59,6 +63,7 @@ snyk_body= json.dumps({
 response = requests.request("POST", snyk_url, headers=snyk_headers, data=snyk_body)
 response_dict = response.json()
 
+print(response_dict)
 #Creating the payload for the Jira ticket
 payload=  {
     "fields": {
@@ -142,13 +147,11 @@ while response_dict['issues']:
 
 	desc_count+=1
 
-url = "https://snyksec.atlassian.net/rest/api/3/issue"
+url = "https://infinitusai.atlassian.net/rest/api/3/issue"
 payload=json.dumps(payload)
 
 headers = {
-  'Authorization': 'Basic xxxxxxxxx',
-  'Content-Type': 'application/json',
-  'Cookie': 'xxxxx'
+  'Content-Type': 'application/json'
 }
 
 response = requests.request("POST", url, headers=headers, data=payload)
