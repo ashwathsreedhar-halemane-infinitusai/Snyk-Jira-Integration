@@ -27,3 +27,10 @@ python3 list-all-issues.py
 # Output:
 
 Output.json
+
+Progress:
+output.py -> list all the issues, formats data for jira creation. 
+
+We can write a method to check if Snyk vulnerability already has a Jira ticket attached to it or not, to avoid duplicate Jira tickets. 
+
+
